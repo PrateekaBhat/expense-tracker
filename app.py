@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 from flask.helpers import send_file
 import pandas as pd
 import datetime
-import tkinter as tk
 
 app = Flask(__name__)
 
@@ -37,13 +36,6 @@ def upload_file():
 
         # Return the chart to the user
         return send_file(chart_path)
-
-def get_screen_dimensions():
-    root = tk.Tk()
-    screen_width = root.winfo_screenwidth()
-    screen_height = root.winfo_screenheight()
-    root.destroy()
-    return screen_width, screen_height
     
 def create_chart(df):
 
@@ -70,10 +62,7 @@ def create_chart(df):
     category_expenses = category_expenses.sort_values(by='Expense', ascending=False)
 
     # Plot a pie chart
-    screen_width, screen_height = get_screen_dimensions()
-    figsize = (screen_width * 0.8 / 100, screen_height * 0.8 / 100)  # Adjust the fraction as needed
-    plt.figure(figsize=figsize, tight_layout={'pad': 0})
-    # plt.figure(figsize=(16, 10))
+    plt.figure(figsize=(10, 8))
     plt.pie(category_expenses['Expense'])
     plt.title('Expense Categories for {} {}'.format(datetime.date(target_year, target_month, 1).strftime('%B'), (target_year)))
     plt.axis('equal')
