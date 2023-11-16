@@ -6,7 +6,6 @@ from flask.helpers import send_file
 import pandas as pd
 import datetime
 import tkinter as tk
-import os
 
 app = Flask(__name__)
 
@@ -86,5 +85,4 @@ def create_chart(df):
     return plt.gcf()
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 8000))
-    app.run(host='localhost', port=port)
+    app.run(host='localhost', port=8000)
