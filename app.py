@@ -62,7 +62,7 @@ def create_chart(df):
     category_expenses = category_expenses.sort_values(by='Expense', ascending=False)
 
     # Plot a pie chart
-    plt.figure(figsize=(10, 8))
+    plt.figure(figsize=(20, 10))
     plt.pie(category_expenses['Expense'])
     plt.title('Expense Categories for {} {}'.format(datetime.date(target_year, target_month, 1).strftime('%B'), (target_year)))
     plt.axis('equal')
